@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.project.KafkaPackage</groupId>
+  <artifactId>YouBuyyConnectorApplication</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <!-- Maven dependency details to download all Kafka jars required to create Producer, Stream and Consumer applications -->
+ <dependencies>    
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka_2.11</artifactId>
+		    <version>1.0.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka-clients</artifactId>
+		    <version>1.0.0</version>
+		</dependency>  
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka-streams</artifactId>
+		    <version>1.0.0</version>
+		</dependency> 
+                               
+         <dependency>                       
+             <groupId>mysql</groupId> 
+             <artifactId>mysql-connector-java</artifactId> 
+             <version>5.1.6</version> 
+          </dependency>
+      
+  </dependencies>  
+<!-- build plugin details to create single application executable jar -->
+  <build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+                            <!-- Provide complete main class details of the project (PackageName.Class) -->
+							<mainClass>com.project.KafkaPackage.GetDataFromMySQL</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
